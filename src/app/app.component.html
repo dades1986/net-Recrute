@@ -1,4 +1,6 @@
-<!--Interpolation-->
+
+<!--1. One-Way Data Binding-->
+<!--a. Interpolation-->
 <div>
     <h1>{{ title }}</h1>
     <p>User Name: {{ user.name }}</p>
@@ -8,3 +10,10 @@
     <p>5 +5 = {{ 5+5 }}</p>
   </div>
   
+  <!--b.  Property Binding-->
+  <img src="assets\images\image.png">
+  <div>
+    <h2>Dynamic Image Example</h2>
+    <img [src]="imageUrlLogoNetRecrute" alt="Dynamic Image">
+    <img [src]="imageUrlLogoNetRecrute2" alt="Dynamic Image">
+  </div>
