@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -25,5 +25,13 @@ export class AppComponent {
 
   handleClick() {
     alert('Button was clicked!');
+  }
+
+  @HostListener('document:dblclick', ['$event'])
+  onDoubleClick(event: MouseEvent) {
+    console.log("Double-click event occurred");
+    console.log("Mouse position:", event.clientX, event.clientY);
+    alert("Double-click event occurred");
+    alert("Double-click event occurred\nMouse position: " + event.clientX + ", " + event.clientY);
   }
 }
