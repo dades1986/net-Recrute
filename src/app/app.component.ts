@@ -1,6 +1,7 @@
-import { Component, HostListener, Renderer2, ElementRef, OnInit } from '@angular/core';
+import { Component, HostListener, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent  implements OnInit{
+export class AppComponent  implements AfterViewInit{
   title = 'netrecrute';
   user = {
     name: 'John Doe',
@@ -36,10 +37,15 @@ export class AppComponent  implements OnInit{
   }
 
   constructor(private renderer: Renderer2, private el: ElementRef) {}
-  ngOnInit() {
+ /** ngOnInit() {
     this.renderer.listen(this.el.nativeElement, 'click', () => {
-      alert("click event occurred using Renderer2");
+      //alert("click event occurred using Renderer2");
     });
+}*/
+ngAfterViewInit() {
+  fromEvent(document, 'click').subscribe(() => {
+    alert("click event occurred using observable");
+});
 }
 
 }
