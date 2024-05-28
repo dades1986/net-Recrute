@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Renderer2, ElementRef, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
   title = 'netrecrute';
   user = {
     name: 'John Doe',
@@ -31,7 +31,15 @@ export class AppComponent {
   onDoubleClick(event: MouseEvent) {
     console.log("Double-click event occurred");
     console.log("Mouse position:", event.clientX, event.clientY);
-    alert("Double-click event occurred");
-    alert("Double-click event occurred\nMouse position: " + event.clientX + ", " + event.clientY);
+   // alert("Double-click event occurred");
+    //alert("Double-click event occurred\nMouse position: " + event.clientX + ", " + event.clientY);
   }
+
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  ngOnInit() {
+    this.renderer.listen(this.el.nativeElement, 'click', () => {
+      alert("click event occurred using Renderer2");
+    });
+}
+
 }
