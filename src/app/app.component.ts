@@ -2,11 +2,12 @@ import { Component, HostListener, Renderer2, ElementRef, AfterViewInit } from '@
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { fromEvent } from 'rxjs';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet,CommonModule, TodoListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
